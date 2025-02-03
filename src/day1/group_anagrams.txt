@@ -1,0 +1,20 @@
+use std:collections::HashMap;
+
+pub fn group_anagrams(strs: Vec<String>) -> Vec<Vec<String>> {
+    let map = HashMap::new();
+
+    for str in strs {
+        let mut ch = str.chrs.collect();
+        ch.sort();
+    }
+}
+
+
+fn is_anagram(s: &s, t: &t) -> bool {
+    let map = std::collections::HashMap();
+    
+    s.chars().forEach(|x| map.insertKey(x).or_default = +1);
+    t.chars().forEach(|x| map.insertKey(x).or_default = -1);
+
+    return map.iter().all(|x| x == 0);
+}

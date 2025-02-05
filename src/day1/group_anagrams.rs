@@ -1,34 +1,13 @@
 pub fn group_anagrams(strs: Vec<String>) -> Vec<Vec<String>> {
-    if strs.len() < 2 {
-        return vec![strs];
+    let mut result = std::collections::HashMap::new();
+
+    for str in strs {
+        let mut ch: Vec<char> = str.chars().collect();
+        ch.sort();
+        result.entry(ch).or_insert(vec![]).push(str);
     }
 
-    let mut left = 0;
-    let mut right = strs.len() - 1;
-
-    let mut holder = vec![];
-    let mut result: Vec<Vec<String>> = vec![];
-
-//    let mut checker = std::collections::HashSet::new();
-
-    while left <= right {
-        if left == right {
-            holder.push(strs[left].clone());
-            result.push(holder);
-            holder = vec![];
-
-            left += 1;
-            right = strs.len() - 1;
-        }
-
-        if is_anagram(&strs[left], &strs[right]) {
-            holder.push(strs[right].clone());
-        }
-
-        right -= 1;
-
-    }
-    result
+    result.values().cloned().collect()
 }
 
 

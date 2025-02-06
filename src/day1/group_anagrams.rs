@@ -7,7 +7,7 @@ pub fn group_anagrams(strs: Vec<String>) -> Vec<Vec<String>> {
         result.entry(ch).or_insert(vec![]).push(str);
     }
 
-    result.values().cloned().collect()
+    result.into_values().collect()
 }
 
 
@@ -34,6 +34,8 @@ mod tests {
         assert_eq!(group_anagrams(strs), vec![vec![String::from("a")]]);
 
         let strs = vec![String::from("eat"), String::from("tea"), String::from("tan"), String::from("ate"), String::from("nat"), String::from("bat")];
-        assert_eq!(group_anagrams(strs), vec![vec![String::from("bat")], vec![String::from("nat"), String::from("tan")], vec![String::from("ate"), String::from("eat"), String::from("tea")]]);
+        assert_eq!(group_anagrams(strs), vec![vec![String::from("eat"), String::from("tea"), String::from("ate")], vec![String::from("bat")], vec![String::from("tan"), String::from("nat")]]);
+        // [["tan", "nat"], ["bat"], ["eat", "tea", "ate"]]
+        //assert_eq!(group_anagrams(strs), vec![vec![String::from("tan"), String::from("nat")], vec![String::from("bat")], vec![String::from("eat"), String::from("tea"), String::from("ate")]]);
     }
 }

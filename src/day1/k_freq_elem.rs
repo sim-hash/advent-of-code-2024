@@ -6,10 +6,14 @@ pub fn top_k_frequent(nums: Vec<i32>, k: i32) -> Vec<i32> {
         let count = map.entry(x).or_insert(0);
         *count += 1;
 
-        if *count == k {
-            result.push(x)
-        }
+//        if *count == k {
+//            result.push(x)
+//        }
     });
+
+
+    println!("{:?}", map);
+
 
     result
 }
